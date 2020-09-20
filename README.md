@@ -1,6 +1,29 @@
+#### Purpose
+Super basic 'library' I (plan to) use for scraping.   
+Also practice git, composer, testing while creating something useful!
+ 
+ Create with the idea to use with Querypath DOM parser. Not a requirement. 
+ 
+#### Status
+- Unit Tests have been added.  
+- Handles types: float, double, int, text.
+- Collapses and trims whitespace, including annoying unicode spaces. Untested.
 
-#### Uses
+   
+#### Usage
+ 
+setByValue() Expects HTML input  text, type to convert the html input.  
+Returns proper value while handling all sorts of whitespace quirks.
 
-1. get text of element. auto check truthy
-2. get innerhtml of element. auto check truthy
+```php
+$htmlNormalizer->setByValue($cols['last_name'], $dates->eq(2)->text());
+$htmlNormalizer->setByValue($cols['first_name'], $qp->find('div[data-label="Mar 2022"]')->text());
+$htmlNormalizer->setByValue($cols['password'], $qp->find('.voyage-pricing-gallery__overlay')->attr('href'));
 
+var_dump($htmlNormalizer->extractedValues);
+```
+
+#### Todo
+- Handle `&nbsp;` char as space
+- test unicode whitespace chars
+- function to convert latin chars to english
