@@ -2,7 +2,6 @@
 
 namespace gyaani\guy\Classes;
 
-use QueryPath\DOMQuery;
 use Stringy\Stringy;
 
 /**
@@ -52,13 +51,13 @@ class HtmlNormalizer
      */
     private function extractDigits($rawInput)
     {
-        $extracted = preg_replace('#[^\d\.\-]#', '', $rawInput);
+        $extracted = preg_replace('#[^\d.\-]#', '', $rawInput);
         return $extracted;
     }
 }
 /*
  * Get table
  * - set col -> type
- * Setfunctions for each col - (colname, value) OR (colname,selector/regex)
+ * Set functions for each col - (colname, value) OR (colname,selector/regex)
  *
  */
