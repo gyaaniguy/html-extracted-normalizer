@@ -30,14 +30,7 @@
     "bin": ["vendor/bin"],
     "scripts": {
         "test": "codecept",
-        "m": "phinx",
         "check-style": "phpcs src tests",
         "fix-style": "phpcbf src tests"
-    },
-    "require": {
-        "aura/sql": "^3.0",
-        "aura/sqlquery": "^2.7",
-        "aura/sqlschema": "^2.0",
-        "robmorgan/phinx": "^0.12.4"
     }
 }

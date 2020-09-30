@@ -1,8 +1,8 @@
 #### Purpose
-Super basic 'library' I (plan to) use for scraping.   
+ Convert html fragments to useable data according to format. Super basic 'library' I (plan to) use for scraping.   
 Also practice git, composer, testing while creating something useful!
  
- Create with the idea to use with Querypath DOM parser. Not a requirement. 
+Ideally to use with Querypath DOM parser. Not a requirement. 
  
 #### Status
 - Unit Tests have been added.  

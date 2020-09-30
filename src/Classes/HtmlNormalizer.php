@@ -19,8 +19,7 @@ class HtmlNormalizer
     {
         $name = $col[0];
         $type = empty($col[1]) ? 'string' : $col[1];
-        $saneInput = (string)Stringy::create($rawInput)->collapseWhitespace()->trim();
-        $value = $this->handleType($type, $saneInput);
+        $value = $this->getNormalizedValue($rawInput, $type);
         $this->extractedValues[$name] = $value;
     }
 
@@ -53,6 +52,18 @@ class HtmlNormalizer
     {
         $extracted = preg_replace('#[^\d.\-]#', '', $rawInput);
         return $extracted;
+    }
+
+    /**
+     * @param $rawInput
+     * @param string $type
+     * @return float|int|string
+     */
+    public function getNormalizedValue($rawInput, string $type ='text')
+    {
+        $saneInput = (string)Stringy::create($rawInput)->collapseWhitespace()->trim();
+        $value = $this->handleType($type, $saneInput);
+        return $value;
     }
 }
 /*
