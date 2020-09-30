@@ -27,9 +27,10 @@ class HtmlNormalizer
     private function handleType($type, $rawInput)
     {
         $type = strtolower($type);
-        if (strstr($type, 'int') !== false) {
+        if (strstr($type, 'tinyint') !== false) {
+            $out = strlen($rawInput) > 0 ? 1 : 0;
+        } elseif (strstr($type, 'int') !== false) {
             $extracted = $this->extractDigits($rawInput);
-
             $out = $extracted ? intval($extracted, 10) : '';
         } elseif (strstr($type, 'float') !== false) {
             $extracted = $this->extractDigits($rawInput);
@@ -59,7 +60,7 @@ class HtmlNormalizer
      * @param string $type
      * @return float|int|string
      */
-    public function getNormalizedValue($rawInput, string $type ='text')
+    public function getNormalizedValue($rawInput, string $type = 'text')
     {
         $saneInput = (string)Stringy::create($rawInput)->collapseWhitespace()->trim();
         $value = $this->handleType($type, $saneInput);

@@ -32,8 +32,22 @@ class HtmlNormalizerTest extends Unit
         $this->htmlNormalizer->setByValue([$name, 'int'], ' 455 ');
         self::assertSame(455, $this->htmlNormalizer->extractedValues[$name]);
 
+        $this->htmlNormalizer->setByValue([$name, 'int'], '  ₹ 9,499.00
+
+(inc GST)  ');
+        self::assertSame(9499, $this->htmlNormalizer->extractedValues[$name]);
+
         $this->htmlNormalizer->setByValue([$name, 'int'], 'text');
         self::assertSame('', $this->htmlNormalizer->extractedValues[$name]);
+
+        $this->htmlNormalizer->setByValue([$name, 'tinyint'], '  ');
+        self::assertSame(0, $this->htmlNormalizer->extractedValues[$name]);
+
+        $this->htmlNormalizer->setByValue([$name, 'tinyInt'], ' d');
+        self::assertSame(1, $this->htmlNormalizer->extractedValues[$name]);
+
+        $this->htmlNormalizer->setByValue([$name, 'tinyInt'], '');
+        self::assertSame(0, $this->htmlNormalizer->extractedValues[$name]);
 
         $this->htmlNormalizer->setByValue([$name, 'float'], 55.55);
         self::assertSame(55.55, $this->htmlNormalizer->extractedValues[$name]);
