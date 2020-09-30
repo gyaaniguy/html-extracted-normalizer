@@ -12,8 +12,7 @@ Ideally to use with Querypath DOM parser. Not a requirement.
    
 #### Usage
  
-setByValue() Expects HTML input  text, type to convert the html input.  
-Returns proper value while handling all sorts of whitespace quirks.
+setByValue() Expects: HTML text, ReturnType. Sets return $cols arr   
 
 ```php
 $htmlNormalizer->setByValue($cols['last_name'], $dates->eq(2)->text());
@@ -22,8 +21,12 @@ $htmlNormalizer->setByValue($cols['password'], $qp->find('.voyage-pricing-galler
 
 var_dump($htmlNormalizer->extractedValues);
 ```
+getNormalizedValue() - simply return after formatting.
+$properText = $htmlNormalizer->getNormalizedValue($rawInput, 'text');
+
 
 #### Todo
 - Handle `&nbsp;` char as space
 - test unicode whitespace chars
 - function to convert latin chars to english
+- Proper APi docs instead of dumping into readme.

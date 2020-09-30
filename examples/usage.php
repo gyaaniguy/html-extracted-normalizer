@@ -21,5 +21,7 @@ $htmlNormalizer->setByValue($cols['first_name'], $qp->find('div[data-label="Mar 
 $htmlNormalizer->setByValue($cols['password'], $qp->find('.voyage-pricing-gallery__overlay')->attr('href'));
 $rawInput = $qp->find('.aza-vs__filter-date')->eq(2)->find('[data-label="Apr 2022"]')->text();
 $htmlNormalizer->setByValue($cols['email'], $rawInput);
+$properText = $htmlNormalizer->getNormalizedValue($rawInput, 'text');
 
+var_dump($properText);
 var_dump($htmlNormalizer->extractedValues);
